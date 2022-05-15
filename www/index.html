@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162798830-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-162798830-2');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Viana + Transparente - Dashboard</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Meta tags to Social Media -->
+  <meta property="og:title" content="Viana + Transparente" />
+  <meta property="og:url" content="http://www.vianamaistransparente.pt/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://www.vianamaistransparente.pt/img/fb-cover.jpg" />
+  <meta property="og:description" content="Viana + Transparente pretende levar a conhecer melhor os contornos da contratação pública, chamar a atençãos dos cidadãos para os dados públicos e colocar na discussão a necessidade de os dados serem disponibilizados de forma mais organizada."
+  />
+
+  <!-- Custom fonts for this template -->
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+  <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+  <!-- Chart JS library -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contratacao.html">O que é a Contratação Pública?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Equipa</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/cover.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Viana + Transparente</h1>
+            <h2 class="subheading">Tudo sobre os Contratos da Câmara Municipal de Viana do Castelo</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container-aux">
+      <div class="row ">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          <div class="row justify-content-between">
+            <div class="col-lg-3 col-md-10 big-numbers">
+              <h3 class="section-heading title-numbers">Total de Contratos</h3>
+              <h3 id="sum" class="section-heading numbers-area"></h3>
+              <div class="detail-section detail-section-numbers">Dados desde: 25 de Outubro de 2011</div>
+
+            </div>
+            <div class="col-lg-3 col-md-10 big-numbers">
+              <h3 class="section-heading title-numbers">Total Contratado</h3>
+              <h3 id="total" class="section-heading numbers-area"></h3>
+              <div class="detail-section detail-section-numbers">Milhões de Euros</div>
+
+            </div>
+            <div class="col-lg-3 col-md-10 big-numbers">
+              <h3 class="section-heading title-numbers">Total Ajustes Diretos </h3>
+              <h3 id="ajustes" class="section-heading numbers-area"></h3>
+              <div class="detail-section detail-section-numbers">Milhões de Euros</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row margin-top">
+        <div class="col-lg-10 col-md-10 mx-auto ">
+          <div class="row">
+            <div class="col-lg-8 col-md-12">
+              <h3 class="section-heading">Valor Gasto por Actividade</h3>
+            </div>
+            <div class="col-lg-4 col-md-12 flex-vertical-center">
+              <select onchange="filterByCat(this.value)" class="form-control" id="exampleFormControlSelect1">
+                  <option disabled selected hidden>Filtrar por Categoria</option>
+                  <option value="1">Obras Públicas</option>
+                  <option value="2">Transportes, Veiculos e Combustíveis</option>
+                  <option  value="3">Hoteís Alojamento e Restaurantes</option>
+                  <option  value="4">Cultura Eventos e Vida Social</option>
+                  <option  value="5">Desporto e Eventos Desportivos</option>
+                  <option  value="6">Comunicação</option>
+                  <option  value="7">Informática e Equipamento Técnico</option>
+                  <option  value="9">Educação</option>
+                  <option  value="11">Pessoal em Regime de Tarefa</option>
+                  <option  value="13">Serviços Variados</option>
+                  <option  value="14">Manutenção de Infraestruturas</option>
+                </select>
+            </div>
+          </div>
+
+          <canvas width="100%" height="25%" id="chart-1"></canvas>
+        </div>
+      </div>
+      <div class="row margin-top-bottom">
+        <div class="col-lg-10 col-md-10 mx-auto">
+
+          <div class="row  justify-content-between">
+            <div class="col-lg-5 col-md-10">
+              <div class="row">
+                <div class="col-lg-8 col-md-12">
+                  <h3 class="section-heading">Distribuição por Procedimento</h3>
+
+                </div>
+                <div class="col-lg-4 col-md-12 flex-vertical-center">
+                  <select onchange="filterAnoChart2(this.value)" class="form-control" id="exampleFormControlSelect1">
+                      <option disabled selected hidden>Ano</option>
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+
+                    </select>
+                </div>
+
+              </div>
+              <canvas width="100%" height="75%" id="chart-2"></canvas>
+            </div>
+            <div class="col-lg-5 col-md-10">
+              <div class="row">
+                <div class="col-lg-8 col-md-12">
+                  <h3 class="section-heading">Valor Gasto por Procedimento</h3>
+
+                </div>
+                <div class="col-lg-4 col-md-12 flex-vertical-center">
+                  <select onchange="filterAnoChart3(this.value)" class="form-control" id="exampleFormControlSelect1">
+                      <option disabled selected hidden>Ano</option>
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+
+                    </select>
+                </div>
+              </div>
+              <canvas width="100%" height="75%" id="chart-3"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-between margin-top-bottom">
+        <div class="col-lg-10 col-md-10 mx-auto">
+
+          <div class="row">
+            <div class="col-lg-8 col-md-12">
+              <h3 class="section-heading">Valores de Contrato por Categoria</h3>
+            </div>
+            <div class="col-lg-4 col-md-12 flex-vertical-center">
+              <select onchange="filterAnoChart4(this.value)" class="form-control" id="exampleFormControlSelect1">
+                  <option disabled selected hidden>Ano</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+
+                </select>
+            </div>
+          </div>
+
+          <canvas width="100%" height="25%" id="chart-4"></canvas>
+        </div>
+      </div>
+
+
+      <div class="row ">
+        <div class="col-lg-10 col-md-10 mx-auto">
+
+          <div class="flex-container">
+            <div class="banner">
+              <h3 class="section-heading">O que é a Contratação Pública? </h3>
+              <div class="banner-bottom">
+                 <a href="contratacao.html"> Consulta + Informação</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-between">
+            <div class="col-lg-6 col-md-10 ">
+              <div class="row justify-content-between">
+                <div class="col-lg-8 col-md-12 flex-vertical-center">
+                  <h3 class="section-heading">Top Empresas</h3>
+                </div>
+
+                <div class="col-lg-4 col-md-12 flex-vertical-center">
+                  <select onchange="filterAnoTable1(this.value)" class="form-control" id="exampleFormControlSelect1">
+                      <option  selected >Ano</option>
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>  
+                      <option value="2021">2021</option>
+                    </select>
+                </div>
+
+              </div>
+              <table id="table-top" class="table">
+                <tr>
+                  <th>Empresas</th>
+                  <th>Valor Total</th>
+                </tr>
+
+              </table>
+            </div>
+            <div class="col-lg-6 col-md-10 ">
+              <div class="row justify-content-between">
+                <div class="col-lg-8 col-md-12 flex-vertical-center">
+                  <h3 class="section-heading">Top Empresas Ajustes Directos</h3>
+                </div>
+                <div class="col-lg-4 col-md-12 flex-vertical-center">
+                  <select onchange="filterAnoTable2(this.value)" class="form-control" id="exampleFormControlSelect2">
+                      <option selected >Ano</option>
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+
+                    </select>
+                </div>
+
+              </div>
+              <table id="table-ajustes" class="table">
+                <tr>
+                  <th>Empresas</th>
+                  <th>Valor Total</th>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-12 col-md-12">
+              <h3 class="section-heading">Todos Contratos</h3>
+              <div style="overflow-x:auto;">
+                <table id="table-contratos" class="table contratos-table">
+                  <tr class="contratos-table-row">
+                    <th align="left">Descrição</th>
+                    <th>Tipo de Contrato</th>
+                    <th>Categoria</th>
+                    <th>Empresa</th>
+                    <th>Preço Contratual</th>
+                    <th>Data</th>
+                  </tr>
+
+                </table>
+              </div>
+
+              <div class="row justify-content-center ">
+                <div id="loader" class="loader center"></div>
+
+              </div>
+
+              <button id="clickButton" class="btn btn-primary" type="button" onclick="loadMoreClick()" name="button">+  Contratos</button>
+
+
+            </div>
+          </div>
+          <h3 class="ficha-tecnica"> Ficha Técnica </h3>
+
+          <p class="texto-ficha">
+            Este portal foi desenvolvido com os dados disponibilizados na Plataforma <a target="_blank" href="http://www.base.gov.pt/">Base.gov.pt</a>. Dadas a limitações da plataforma em questão apenas foi possível exportar os últimos 2000 contratos
+            no dia 16 de Maio de 2020. Os contratos foram categorizados de forma automática, sendo que, cerca de 500 contratos foram classificados manualmente dada a utilização excessiva dos cpv "98300000-6, Serviços diversos" e "98390000-3, Outros serviços"
+            Qualquer questão, pode entrar em contato com equipa através no <a href="contact.html">formulário</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <!-- <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li> -->
+            <!-- <li class="list-inline-item">
+              <a href="">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li> -->
+            <!-- <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li> -->
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Armindo Barbosa e Jéssica Ferraz <script>document.write(new Date().getFullYear())</script></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+  <script type="text/javascript" src="js/data-load.js"></script>
+
+
+
+
+</body>
+
+</html>
